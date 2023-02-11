@@ -10,7 +10,6 @@ export default function EmpDetail() {
         return res.json();
       })
       .then((resp) => {
-        console.log(resp);
         datachange(resp);
       })
       .catch((err) => {

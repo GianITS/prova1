@@ -36,6 +36,7 @@ export default function EmpListing() {
         }
       })
       .then((resp) => {
+        console.log(resp);
         empdatachange(resp.tasks);
       })
       .catch((err) => {

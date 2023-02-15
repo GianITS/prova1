@@ -1,15 +1,29 @@
+.thDark{
+  background-color: #2b2b33 !important;
+}
+.thLightDark{
+  background-color: #36363d !important;
+}
 .App {
   text-align: center;
 }
-.btn{
+.btn {
   margin: 2px;
 }
-.divbtn{
+.btnCreate{
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+}
+.divbtn {
   float: left;
 }
-.divBtnRight{
+.divBtnRight {
   float: right;
 }
-.link{
+.link {
   cursor: pointer;
+}
+.minWidth{
+  min-width: 60%;
 }

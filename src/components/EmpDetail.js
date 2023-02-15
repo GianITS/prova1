@@ -17,19 +17,19 @@ export default function EmpDetail() {
       });
   }, []);
   return (
-    <div>
-      <div className="card">
+    <div className="container">
+      <div className="card thDark text-white border border-0">
         <div className="card-title">
           {data && (
             <div>
-              <h1>
-                <b>{data.title}</b> - id_{data.id}
+              <h1 className="mt-4 mb-5">
+                <b>{data.title}</b>
               </h1>
               <div className="card-body" style={{ textAlign: "left" }}>
-                <h2>Task Details</h2>
-                <h3>Description: {data.content}</h3>
-                <h3>Tags: {data.tags}</h3>
-                <Link to="/" className="btn btn-danger divBtnRight">
+                <p>Description: <b className="fs-3">{data.content}</b></p>
+                <p className="my-3">Tags: <b className="fs-3">{data.tags}</b></p>
+                <p>Time: <b className="fs-3">{data.timer}</b></p>
+                <Link to="/" className="btn btn-danger divBtnRight mt-5">
                   Back
                 </Link>
               </div>

@@ -4,10 +4,13 @@ import EmpDetail from "./components/EmpDetail";
 import EmpEdit from "./components/EmpEdit";
 import EmpCreate from "./components/EmpCreate";
 import EmpListing from "./components/EmpListing";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <div className="App">
+      <ToastContainer />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<EmpListing />}></Route>

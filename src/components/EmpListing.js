@@ -14,6 +14,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import CloseIcon from '@mui/icons-material/Close';
 import StopWatch from "./StopWatch";
 import { IconButton, List, ListItem, ListItemText } from "@mui/material";
+import { blue } from '@mui/material/colors';
 
 export default function EmpListing() {
   const [empdata, empdatachange] = useState([]);
@@ -116,7 +117,7 @@ export default function EmpListing() {
           >
             <div className="row d-flex flex-wrap">
               <div className="col minWidth">
-                <div className="card-title">
+                <div className="card-title maxContent">
                   <h2
                     onClick={() => {
                       handleOpenDetailDialog(item);
@@ -175,13 +176,13 @@ export default function EmpListing() {
               </DialogContent>
               <DialogActions className="thDark">
                 <Button
-                  className="border border-primary link"
+                  className="border border-info text-info link"
                   onClick={handleCloseRemoveDialog}
                 >
                   Exit
                 </Button>
                 <Button
-                  className="border border-primary link"
+                  className="border border-info text-info link"
                   onClick={() => {
                     RemoveFunction(item.id);
                   }}
@@ -234,7 +235,7 @@ export default function EmpListing() {
         </DialogContent>
         <DialogActions className="thLightDark">
           <Button
-            className="border border-primary link m-2"
+            className="border border-info text-info link m-2"
             onClick={() => {
               LoadDetail(itemId);
             }}

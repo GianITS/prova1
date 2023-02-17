@@ -14,6 +14,7 @@
   position: fixed;
   bottom: 20px;
   right: 10px;
+  z-index: 100;
 }
 .divbtn {
   float: left;
@@ -26,4 +27,10 @@
 }
 .minWidth{
   min-width: 60%;
+}
+.maxContent{
+  width: max-content;
+}
+.green400{
+  color: #00e676;
 }

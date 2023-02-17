@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import CheckBoxList from "./CheckBoxList";
+import { TextField } from "@mui/material";
 
 export default function EmpCreate() {
   const [id, idchange] = useState("");
@@ -12,6 +20,26 @@ export default function EmpCreate() {
   const [validationContent, valcontentchange] = useState(false);
   const [validationTags, valtagschange] = useState(false);
   const navigate = useNavigate();
+  const [listCheckBox, listcheckboxchange] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [subTask, subtaskchange] = useState("");
+  const fullWidth = true;
+  const maxWidth = "sm";
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const addCheckBox = () => {
+    if (subTask.length > 0){
+      listcheckboxchange((oldArray) => [...oldArray, subTask]);
+      setOpen(false);
+    }
+  };
 
   const handlesubmit = (e) => {
     e.preventDefault();
@@ -80,12 +108,71 @@ export default function EmpCreate() {
                     required
                     onMouseDown={(e) => valtagschange(true)}
                     onChange={(e) => tagschange(e.target.value)}
-                    className="form-control mb-5"
+                    className="form-control mb-4"
                   ></input>
                   {tags.length === 0 && validationTags && (
                     <span className="text-danger">Enter the tags</span>
                   )}
                 </div>
+              </div>
+              <div className="col-lg-12">
+                <button
+                  type="button"
+                  className="btn btn-outline-success divBtnRight"
+                  onClick={handleClickOpen}
+                >
+                  Add CheckBox
+                </button>
+                <Dialog
+                  open={open}
+                  onClose={handleClose}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alert-dialog-description"
+                  fullWidth={fullWidth}
+                  maxWidth={maxWidth}
+                >
+                  <DialogTitle
+                    id="alert-dialog-title"
+                    className="thDark text-white"
+                  >
+                    {"Insert Sub Task"}
+                  </DialogTitle>
+                  <DialogContent className="thDark">
+                    <TextField
+                      required
+                      autoFocus
+                      margin="normal"
+                      id="standard-basic"
+                      label="SubTask"
+                      type="text"
+                      fullWidth
+                      variant="standard"
+                      onChange={(e) => subtaskchange(e.target.value)}
+                      color='info'
+                      sx={{ input: { color: 'white' }, label: { color: 'white' } }}
+                    />
+                  </DialogContent>
+                  <DialogActions className="thDark pt-2 p-3 thDark">
+                    <Button
+                      className="border border-info text-info link"
+                      onClick={handleClose}
+                    >
+                      Exit
+                    </Button>
+                    <Button
+                      className="border border-info text-info link"
+                      onClick={() => {
+                        addCheckBox();
+                      }}
+                    >
+                      Add
+                    </Button>
+                  </DialogActions>
+                </Dialog>
+                {listCheckBox &&
+                  listCheckBox.map((item, index) => (
+                    <CheckBoxList name={item} key={index} />
+                  ))}
               </div>
               <div className="col-lg-12">
                 <div className="form-group divBtnRight">
